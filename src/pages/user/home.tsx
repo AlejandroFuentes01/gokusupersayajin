@@ -14,33 +14,45 @@ export default function UserHome() {
                     <table className="table-auto w-full border-collapse">
                         <thead className="bg-gray-200 text-gray-700">
                             <tr>
-                                <th className="border px-4 py-2 text-center text-sm">ID</th>
-                                <th className="border px-4 py-2 text-center text-sm">Área</th>
-                                <th className="border px-4 py-2 text-center text-sm">Fecha de Emisión</th>
-                                <th className="border px-4 py-2 text-center text-sm">Observaciones</th>
-                                <th className="border px-4 py-2 text-center text-sm">Quién Reportó</th>
-                                <th className="border px-4 py-2 text-center text-sm">Quién le dio Seguimiento</th>
-                                <th className="border px-4 py-2 text-center text-sm">Días Transcurridos</th>
+                                <th className="border px-4 py-2 text-left text-sm">ID</th>
+                                <th className="border px-4 py-2 text-left text-sm">Área</th>
+                                <th className="border px-4 py-2 text-left text-sm hidden md:table-cell">Fecha de Emisión</th>
+                                <th className="border px-4 py-2 text-left text-sm">Observaciones</th>
+                                <th className="border px-4 py-2 text-left text-sm hidden lg:table-cell">Quién Reportó</th>
+                                <th className="border px-4 py-2 text-left text-sm hidden lg:table-cell">Quién le dio Seguimiento</th>
+                                <th className="border px-4 py-2 text-left text-sm hidden md:table-cell">Fecha de Término</th>
                                 <th className="border px-4 py-2 text-center text-sm">Gestionar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {/* Fila vacía */}
+                            {/* Ejemplo de Fila */}
+                            <tr>
+                                <td className="border px-4 py-2 text-center text-sm">1</td>
+                                <td className="border px-4 py-2 text-left text-sm">Aula 101</td>
+                                <td className="border px-4 py-2 text-left text-sm hidden md:table-cell">2024-01-10</td>
+                                <td className="border px-4 py-2 text-left text-sm">Falla en el proyector</td>
+                                <td className="border px-4 py-2 text-left text-sm hidden lg:table-cell">Juan Pérez</td>
+                                <td className="border px-4 py-2 text-left text-sm hidden lg:table-cell">María López</td>
+                                <td className="border px-4 py-2 text-left text-sm hidden md:table-cell">2024-01-15</td>
+                                <td className="border px-4 py-2 text-center text-sm">
+                                    <button className="px-3 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600">
+                                        Ver
+                                    </button>
+                                </td>
+                            </tr>
+                            {/* Fila Vacía */}
                             <tr>
                                 <td className="border px-4 py-2 text-center text-sm" colSpan={8}>
                                     No hay reportes disponibles.
                                 </td>
                             </tr>
-                            {/* Agregar filas dinámicas aquí */}
                         </tbody>
                     </table>
                 </div>
             </main>
 
             {/* Footer */}
-            <footer className="bg-gray-200 text-gray-600 text-center py-4 mt-auto">
-                <p className="text-sm">&copy; {new Date().getFullYear()} Sistema de Incidencias. Todos los derechos reservados.</p>
-            </footer>
+            <GeneralFooter />
         </div>
     );
 }

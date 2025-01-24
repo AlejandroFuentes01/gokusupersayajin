@@ -1,4 +1,6 @@
 // src/pages/register.tsx
+import GeneralFooter from '@/components/GeneralFooter';
+import GeneralHeader from '@/components/GeneralHeader';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useState } from 'react';
@@ -132,52 +134,63 @@ export default function Register() {
     );
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center">
-                    <h2 className="text-2xl font-bold text-center text-gray-800">Regístrate</h2>
-                    <p className="text-center text-gray-600">Completa los campos para continuar</p>
-                </div>
+        <div className="flex flex-col min-h-screen bg-gray-100">
+            {/* Header */}
+            <GeneralHeader />
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    {renderInput('codigo', 'Código de Acceso', 'text', 'Ingresa tu código de acceso')}
-                    {renderInput('nombre', 'Nombre Completo', 'text', 'Ingresa tu nombre')}
-                    {renderInput('email', 'Correo electrónico', 'email', 'Ingresa tu correo electrónico')}
-                    {renderInput('password', 'Contraseña', 'password', 'Ingresa tu contraseña')}
-
-                    {error && (
-                        <div className="p-3 text-sm text-red-500 bg-red-50 rounded-lg">
-                            {error}
-                        </div>
-                    )}
-
-                    {success && (
-                        <div className="p-3 text-sm text-green-500 bg-green-50 rounded-lg">
-                            {success}
-                        </div>
-                    )}
-
-                    <button
-                        type="submit"
-                        className={`w-full px-4 py-2 text-white bg-indigo-600 rounded-lg 
-                            hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 
-                            focus:ring-indigo-500 focus:outline-none
-                            disabled:opacity-50 disabled:cursor-not-allowed
-                            transition duration-200 ease-in-out
-                            ${isLoading ? 'cursor-not-allowed' : ''}`}
-                        disabled={isLoading}
-                    >
-                        {isLoading ? 'Registrando...' : 'Registrarse'}
-                    </button>
-
-                    <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                        <p>¿Ya tienes una cuenta?</p>
-                        <Link href="/" className="text-indigo-600 hover:text-indigo-500">
-                            Iniciar Sesión
-                        </Link>
+            {/* Contenido Principal */}
+            <main className="flex-grow flex items-center justify-center py-10">
+                <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-lg">
+                    <div className="flex flex-col items-center">
+                        <h2 className="text-2xl font-bold text-center text-gray-800">Regístrate</h2>
+                        <p className="text-center text-gray-600">Completa los campos para continuar</p>
                     </div>
-                </form>
-            </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        {renderInput('codigo', 'Código de Acceso', 'text', 'Ingresa tu código de acceso')}
+                        {renderInput('nombre', 'Nombre Completo', 'text', 'Ingresa tu nombre')}
+                        {renderInput('email', 'Correo electrónico', 'email', 'Ingresa tu correo electrónico')}
+                        {renderInput('password', 'Contraseña', 'password', 'Ingresa tu contraseña')}
+
+                        {error && (
+                            <div className="p-3 text-sm text-red-500 bg-red-50 rounded-lg">
+                                {error}
+                            </div>
+                        )}
+
+                        {success && (
+                            <div className="p-3 text-sm text-green-500 bg-green-50 rounded-lg">
+                                {success}
+                            </div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className={`w-full px-4 py-2 text-white bg-indigo-600 rounded-lg 
+                                hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 
+                                focus:ring-indigo-500 focus:outline-none
+                                disabled:opacity-50 disabled:cursor-not-allowed
+                                transition duration-200 ease-in-out
+                                ${isLoading ? 'cursor-not-allowed' : ''}`}
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'Registrando...' : 'Registrarse'}
+                        </button>
+
+                        <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                            <p>¿Ya tienes una cuenta?</p>
+                            <Link href="/" legacyBehavior>
+                                <a className="text-indigo-600 hover:text-indigo-500">
+                                    Iniciar Sesión
+                                </a>
+                            </Link>
+                        </div>
+                    </form>
+                </div>
+            </main>
+
+            {/* Footer */}
+            <GeneralFooter />
         </div>
     );
 }
